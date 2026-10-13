@@ -69,7 +69,9 @@ def check(request, tl, assets, claim=""):
             if bad:
                 sp = {it["id"]: it.get("speed", 1.0) for it in vids}
                 for a, b in bad:
-                    note = f" (stretched by {sp[a['item']]:g}x speed)" if a["item"] == b["item"] and sp[a["item"]] < 1 else ""
+                    s_ = sp[a["item"]]
+                    src_gap = (b["t0"] - a["t1"]) * s_
+                    note = f" (stretched by {s_:g}x speed)" if a["item"] == b["item"] and s_ < 1 and src_gap <= r["max_s"] else ""
                     add(r, False, f"{b['t0'] - a['t1']:.2f} s pause between \"{a['w']}\" and \"{b['w']}\"{note}", a["t1"])
             else:
                 add(r, True, f"no pause over {r['max_s']} s")
@@ -119,10 +121,19 @@ def check(request, tl, assets, claim=""):
                 hit = next((w for w in spoken if _norm(w["w"]) == first), None)
                 if hit is None:
                     hit = next((w for w in words if _norm(w["w"]) == first and abs(w["t0"] - c["start"]) < 3.0), None)
+                lastw = _norm(c["text"].split()[-1]) if c["text"].split() else ""
+                tail = None
+                if hit is not None:
+                    after = [w for w in words if w["t0"] >= hit["t0"] - 1e-6]
+                    n = len(c["text"].split())
+                    tail = next((w for w in after[n - 1:n + 2] if _norm(w["w"]) == lastw), None)
                 if hit is None or abs(hit["t0"] - c["start"]) > r["tol_s"]:
                     bad += 1
                     off = f"{c['start'] - hit['t0']:+.2f} s off \"{hit['w']}\"" if hit else "word not found nearby"
                     add(r, False, f"caption \"{c['text']}\" at {fmt(c['start'])}: {off}", c["start"])
+                elif tail is not None and abs(tail["t1"] - c["end"]) > 0.3:
+                    bad += 1
+                    add(r, False, f"caption \"{c['text']}\" ends {tail['t1'] - c['end']:+.2f} s from when \"{tail['w']}\" is said", c["end"])
             if not bad:
                 add(r, bool(caps), f"{len(caps)} captions start within {r['tol_s']} s of their words" if caps else "no captions on timeline")
         elif k == "duck":

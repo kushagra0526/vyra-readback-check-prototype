@@ -116,7 +116,8 @@ def add_captions(tl, assets, speed_blind=False):
     words, _ = placed_words(tl, assets)
     if speed_blind:  # captions laid out as if the intro still played at 1x
         v = items(tl, "video")[0]
-        words = [dict(w, t0=w["t0"] if w["item"] != v["id"] else v["start"] + (w["t0"] - v["start"]) * v["speed"]) for w in words]
+        blind = lambda t: v["start"] + (t - v["start"]) * v["speed"]
+        words = [w if w["item"] != v["id"] else dict(w, t0=blind(w["t0"]), t1=blind(w["t1"])) for w in words]
     caps, chunk = [], []
     for w in words:
         chunk.append(w)
@@ -202,11 +203,12 @@ def scenario(seed, kind=None, mutation="random", benign=None):
     tl, assets = render(asset, segs, kind, rng, slowmo=slowmo, gap_after=gap_after, transition_at=transition_at)
     caps = next((tr for tr in tl["tracks"] if tr["kind"] == "caption"), None)
     if mutation == "caption_drift":
-        before = {c["text"]: c["start"] for c in caps["items"]}
+        before = {c["text"]: (c["start"], c["end"]) for c in caps["items"]}
         tl["tracks"] = [tr for tr in tl["tracks"] if tr["kind"] != "caption"]
         add_captions(tl, assets, speed_blind=True)
         tl["tracks"].insert(1, tl["tracks"].pop())
-        drift = max(abs(c["start"] - before.get(c["text"], c["start"])) for c in tl["tracks"][1]["items"])
+        drift = max(max(abs(c["start"] - before.get(c["text"], (c["start"], c["end"]))[0]),
+                        abs(c["end"] - before.get(c["text"], (c["start"], c["end"]))[1])) for c in tl["tracks"][1]["items"])
         if drift < 0.2:  # the slowed intro was too short to move any caption: not a real mistake
             mutation = None
     if mutation == "caption_long" and caps:

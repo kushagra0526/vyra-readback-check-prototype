@@ -1,0 +1,99 @@
+{
+  "totals": {
+    "scenarios": 400,
+    "planted": 309,
+    "caught": 308,
+    "frames": 35,
+    "clean": 91,
+    "clean_flagged": 5
+  },
+  "per_mutation": {
+    "first_take": {
+      "n": 30,
+      "caught": 30,
+      "frames": 0
+    },
+    "caption_added": {
+      "n": 19,
+      "caught": 19,
+      "frames": 19
+    },
+    "caption_drift": {
+      "n": 10,
+      "caught": 10,
+      "frames": 0
+    },
+    "no_duck": {
+      "n": 14,
+      "caught": 14,
+      "frames": 0
+    },
+    "unsafe_caption": {
+      "n": 10,
+      "caught": 10,
+      "frames": 4
+    },
+    "clean": {
+      "n": 91
+    },
+    "black_gap": {
+      "n": 30,
+      "caught": 30,
+      "frames": 0
+    },
+    "both_takes": {
+      "n": 34,
+      "caught": 34,
+      "frames": 0
+    },
+    "transition": {
+      "n": 21,
+      "caught": 21,
+      "frames": 2
+    },
+    "caption_text": {
+      "n": 16,
+      "caught": 15,
+      "frames": 0
+    },
+    "flash_frame": {
+      "n": 24,
+      "caught": 24,
+      "frames": 1
+    },
+    "leave_pause": {
+      "n": 25,
+      "caught": 25,
+      "frames": 0
+    },
+    "music_added": {
+      "n": 18,
+      "caught": 18,
+      "frames": 0
+    },
+    "caption_long": {
+      "n": 19,
+      "caught": 19,
+      "frames": 0
+    },
+    "mid_word": {
+      "n": 30,
+      "caught": 30,
+      "frames": 0
+    },
+    "wrong_canvas": {
+      "n": 9,
+      "caught": 9,
+      "frames": 9
+    }
+  },
+  "misses": [
+    {
+      "seed": 1371,
+      "mutation": "caption_text",
+      "failed": [
+        "caption_sync"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,391 @@
+{
+  "request": "Remove pauses over half a second and every retake, keeping the last attempt of each line. Add 3-5 word phrase captions and duck the music to 25% under speech. Export a 9:16 version for TikTok at 1080x1920.",
+  "claim": "Done. Removed all pauses and every retake, kept the last take, added 3-5 word captions synced to speech, ducked the music to 25%, exported 9:16 1080x1920.",
+  "check": {
+    "rules": [
+      {
+        "rule": "max_pause",
+        "max_s": 0.5,
+        "src": "Remove pauses over half a second and every retake, keeping the last attempt of each line."
+      },
+      {
+        "rule": "retakes",
+        "keep": "last",
+        "src": "Remove pauses over half a second and every retake, keeping the last attempt of each line."
+      },
+      {
+        "rule": "caption_words",
+        "min": 3,
+        "max": 5,
+        "src": "Add 3-5 word phrase captions and duck the music to 25% under speech."
+      },
+      {
+        "rule": "caption_sync",
+        "tol_s": 0.15,
+        "src": "Add 3-5 word phrase captions and duck the music to 25% under speech."
+      },
+      {
+        "rule": "duck",
+        "max_gain": 0.25,
+        "src": "Add 3-5 word phrase captions and duck the music to 25% under speech."
+      },
+      {
+        "rule": "format",
+        "src": "Export a 9:16 version for TikTok at 1080x1920.",
+        "aspect": "9:16",
+        "w": 1080,
+        "h": 1920
+      },
+      {
+        "rule": "safe_zone",
+        "platform": "tiktok",
+        "src": "Export a 9:16 version for TikTok at 1080x1920."
+      },
+      {
+        "rule": "mid_word_cut",
+        "src": "(always)"
+      },
+      {
+        "rule": "flash_frame",
+        "src": "(always)"
+      },
+      {
+        "rule": "black_gap",
+        "src": "(always)"
+      },
+      {
+        "rule": "caption_text",
+        "src": "(always)"
+      }
+    ],
+    "unchecked": [],
+    "results": [
+      {
+        "rule": "max_pause",
+        "ok": false,
+        "detail": "0.89 s pause between \"so\" and \"today\" (stretched by 0.5x speed)",
+        "at": 0.542,
+        "src": "Remove pauses over half a second and every retake, keeping the last attempt of each line."
+      },
+      {
+        "rule": "max_pause",
+        "ok": false,
+        "detail": "2.38 s pause between \"month.\" and \"the\"",
+        "at": 10.879999999999999,
+        "src": "Remove pauses over half a second and every retake, keeping the last attempt of each line."
+      },
+      {
+        "rule": "max_pause",
+        "ok": false,
+        "detail": "0.83 s pause between \"first\" and \"thing\" (stretched by 0.5x speed)",
+        "at": 14.86,
+        "src": "Remove pauses over half a second and every retake, keeping the last attempt of each line."
+      },
+      {
+        "rule": "retakes",
+        "ok": true,
+        "detail": "every retake group keeps only the last attempt",
+        "at": null,
+        "src": "Remove pauses over half a second and every retake, keeping the last attempt of each line."
+      },
+      {
+        "rule": "caption_words",
+        "ok": true,
+        "detail": "all 27 captions have 3-5 words",
+        "at": null,
+        "src": "Add 3-5 word phrase captions and duck the music to 25% under speech."
+      },
+      {
+        "rule": "caption_sync",
+        "ok": false,
+        "detail": "caption \"so today I'm finally\" ends +2.03 s from when \"finally\" is said",
+        "at": 2.034,
+        "src": "Add 3-5 word phrase captions and duck the music to 25% under speech."
+      },
+      {
+        "rule": "caption_sync",
+        "ok": false,
+        "detail": "caption \"finishing the painting I\" at 0:02.15: -2.15 s off \"finishing\"",
+        "at": 2.15,
+        "src": "Add 3-5 word phrase captions and duck the music to 25% under speech."
+      },
+      {
+        "rule": "caption_sync",
+        "ok": false,
+        "detail": "caption \"started last month\" at 0:04.11: word not found nearby",
+        "at": 4.106,
+        "src": "Add 3-5 word phrase captions and duck the music to 25% under speech."
+      },
+      {
+        "rule": "caption_sync",
+        "ok": false,
+        "detail": "caption \"the first thing I\" at 0:06.63: +1.01 s off \"the\"",
+        "at": 6.628,
+        "src": "Add 3-5 word phrase captions and duck the music to 25% under speech."
+      },
+      {
+        "rule": "caption_sync",
+        "ok": false,
+        "detail": "caption \"do is block in\" at 0:08.57: word not found nearby",
+        "at": 8.568,
+        "src": "Add 3-5 word phrase captions and duck the music to 25% under speech."
+      },
+      {
+        "rule": "caption_sync",
+        "ok": false,
+        "detail": "caption \"the darkest shadows\" at 0:09.75: word not found nearby",
+        "at": 9.749,
+        "src": "Add 3-5 word phrase captions and duck the music to 25% under speech."
+      },
+      {
+        "rule": "duck",
+        "ok": false,
+        "detail": "music at 100% under speech (limit 25%)",
+        "at": 15.694000000000003,
+        "src": "Add 3-5 word phrase captions and duck the music to 25% under speech."
+      },
+      {
+        "rule": "format",
+        "ok": true,
+        "detail": "canvas 1080x1920",
+        "at": null,
+        "src": "Export a 9:16 version for TikTok at 1080x1920."
+      },
+      {
+        "rule": "safe_zone",
+        "ok": false,
+        "detail": "\"into the greens\" overlaps tiktok bottom UI",
+        "at": 34.308,
+        "src": "Export a 9:16 version for TikTok at 1080x1920."
+      },
+      {
+        "rule": "mid_word_cut",
+        "ok": true,
+        "detail": "no cut lands inside a word",
+        "at": null,
+        "src": "(always)"
+      },
+      {
+        "rule": "flash_frame",
+        "ok": true,
+        "detail": "no clip shorter than 3 frames",
+        "at": null,
+        "src": "(always)"
+      },
+      {
+        "rule": "black_gap",
+        "ok": true,
+        "detail": "picture covers the whole timeline",
+        "at": null,
+        "src": "(always)"
+      },
+      {
+        "rule": "caption_text",
+        "ok": false,
+        "detail": "caption \"finishing the painting I\" doesn't match what's said there",
+        "at": 2.15,
+        "src": "(always)"
+      },
+      {
+        "rule": "caption_text",
+        "ok": false,
+        "detail": "caption \"started last month\" doesn't match what's said there",
+        "at": 4.106,
+        "src": "(always)"
+      },
+      {
+        "rule": "caption_text",
+        "ok": false,
+        "detail": "caption \"the first thing I\" doesn't match what's said there",
+        "at": 6.628,
+        "src": "(always)"
+      },
+      {
+        "rule": "caption_text",
+        "ok": false,
+        "detail": "caption \"do is block in\" doesn't match what's said there",
+        "at": 8.568,
+        "src": "(always)"
+      },
+      {
+        "rule": "caption_text",
+        "ok": false,
+        "detail": "caption \"the darkest shadows\" doesn't match what's said there",
+        "at": 9.749,
+        "src": "(always)"
+      }
+    ],
+    "duration": 57.213,
+    "failed": [
+      {
+        "rule": "max_pause",
+        "ok": false,
+        "detail": "0.89 s pause between \"so\" and \"today\" (stretched by 0.5x speed)",
+        "at": 0.542,
+        "src": "Remove pauses over half a second and every retake, keeping the last attempt of each line."
+      },
+      {
+        "rule": "max_pause",
+        "ok": false,
+        "detail": "2.38 s pause between \"month.\" and \"the\"",
+        "at": 10.879999999999999,
+        "src": "Remove pauses over half a second and every retake, keeping the last attempt of each line."
+      },
+      {
+        "rule": "max_pause",
+        "ok": false,
+        "detail": "0.83 s pause between \"first\" and \"thing\" (stretched by 0.5x speed)",
+        "at": 14.86,
+        "src": "Remove pauses over half a second and every retake, keeping the last attempt of each line."
+      },
+      {
+        "rule": "caption_sync",
+        "ok": false,
+        "detail": "caption \"so today I'm finally\" ends +2.03 s from when \"finally\" is said",
+        "at": 2.034,
+        "src": "Add 3-5 word phrase captions and duck the music to 25% under speech."
+      },
+      {
+        "rule": "caption_sync",
+        "ok": false,
+        "detail": "caption \"finishing the painting I\" at 0:02.15: -2.15 s off \"finishing\"",
+        "at": 2.15,
+        "src": "Add 3-5 word phrase captions and duck the music to 25% under speech."
+      },
+      {
+        "rule": "caption_sync",
+        "ok": false,
+        "detail": "caption \"started last month\" at 0:04.11: word not found nearby",
+        "at": 4.106,
+        "src": "Add 3-5 word phrase captions and duck the music to 25% under speech."
+      },
+      {
+        "rule": "caption_sync",
+        "ok": false,
+        "detail": "caption \"the first thing I\" at 0:06.63: +1.01 s off \"the\"",
+        "at": 6.628,
+        "src": "Add 3-5 word phrase captions and duck the music to 25% under speech."
+      },
+      {
+        "rule": "caption_sync",
+        "ok": false,
+        "detail": "caption \"do is block in\" at 0:08.57: word not found nearby",
+        "at": 8.568,
+        "src": "Add 3-5 word phrase captions and duck the music to 25% under speech."
+      },
+      {
+        "rule": "caption_sync",
+        "ok": false,
+        "detail": "caption \"the darkest shadows\" at 0:09.75: word not found nearby",
+        "at": 9.749,
+        "src": "Add 3-5 word phrase captions and duck the music to 25% under speech."
+      },
+      {
+        "rule": "duck",
+        "ok": false,
+        "detail": "music at 100% under speech (limit 25%)",
+        "at": 15.694000000000003,
+        "src": "Add 3-5 word phrase captions and duck the music to 25% under speech."
+      },
+      {
+        "rule": "safe_zone",
+        "ok": false,
+        "detail": "\"into the greens\" overlaps tiktok bottom UI",
+        "at": 34.308,
+        "src": "Export a 9:16 version for TikTok at 1080x1920."
+      },
+      {
+        "rule": "caption_text",
+        "ok": false,
+        "detail": "caption \"finishing the painting I\" doesn't match what's said there",
+        "at": 2.15,
+        "src": "(always)"
+      },
+      {
+        "rule": "caption_text",
+        "ok": false,
+        "detail": "caption \"started last month\" doesn't match what's said there",
+        "at": 4.106,
+        "src": "(always)"
+      },
+      {
+        "rule": "caption_text",
+        "ok": false,
+        "detail": "caption \"the first thing I\" doesn't match what's said there",
+        "at": 6.628,
+        "src": "(always)"
+      },
+      {
+        "rule": "caption_text",
+        "ok": false,
+        "detail": "caption \"do is block in\" doesn't match what's said there",
+        "at": 8.568,
+        "src": "(always)"
+      },
+      {
+        "rule": "caption_text",
+        "ok": false,
+        "detail": "caption \"the darkest shadows\" doesn't match what's said there",
+        "at": 9.749,
+        "src": "(always)"
+      }
+    ],
+    "claims": [
+      {
+        "claim": "Removed all pauses",
+        "rule": "max_pause",
+        "verdict": "FALSE",
+        "why": "0.89 s pause between \"so\" and \"today\" (stretched by 0.5x speed)"
+      },
+      {
+        "claim": "kept the last take",
+        "rule": "retakes",
+        "verdict": "TRUE",
+        "why": "every retake group keeps only the last attempt"
+      },
+      {
+        "claim": "captions synced",
+        "rule": "caption_sync",
+        "verdict": "FALSE",
+        "why": "caption \"so today I'm finally\" ends +2.03 s from when \"finally\" is said"
+      },
+      {
+        "claim": "3-5 word captions",
+        "rule": "caption_words",
+        "verdict": "TRUE",
+        "why": "all 27 captions have 3-5 words"
+      },
+      {
+        "claim": "ducked the music",
+        "rule": "duck",
+        "verdict": "FALSE",
+        "why": "music at 100% under speech (limit 25%)"
+      },
+      {
+        "claim": "exported 9:16",
+        "rule": "format",
+        "verdict": "TRUE",
+        "why": "canvas 1080x1920"
+      }
+    ]
+  },
+  "frames_baseline": [],
+  "eval": {
+    "dev": {
+      "scenarios": 200,
+      "planted": 147,
+      "caught": 147,
+      "frames": 23,
+      "clean": 53,
+      "clean_flagged": 2
+    },
+    "heldout": {
+      "scenarios": 400,
+      "planted": 307,
+      "caught": 306,
+      "frames": 35,
+      "clean": 93,
+      "clean_flagged": 6
+    }
+  }
+}

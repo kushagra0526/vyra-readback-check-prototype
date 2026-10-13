@@ -1,0 +1,25 @@
+
+== heldout: 400 read-backs, 309 with a planted agent mistake, 91 clean
+   agent said "Done" on all of them
+   mistakes caught:  readcheck 308/309  ·  frames at 0:03/0:15/0:40 35/309  ·  trusting the message 0/309
+   (stretched-pause findings under a 0.5x intro are real and counted as allowed, not hidden)
+   read-backs with any wrong finding: 0  (clean ones flagged: 5/91)
+
+   mistake            n  readcheck  frames  false
+   black_gap         30         30       0      0
+   both_takes        34         34       0      0
+   caption_added     19         19      19      0
+   caption_drift     10         10       0      0
+   caption_long      19         19       0      0
+   caption_text      16         15       0      0
+   first_take        30         30       0      0
+   flash_frame       24         24       1      0
+   leave_pause       25         25       0      0
+   mid_word          30         30       0      0
+   music_added       18         18       0      0
+   no_duck           14         14       0      0
+   transition        21         21       2      0
+   unsafe_caption    10         10       4      0
+   wrong_canvas       9          9       9      0
+   clean             91          0       0      0
+   MISS {'seed': 1371, 'mutation': 'caption_text', 'failed': ['caption_sync']}
